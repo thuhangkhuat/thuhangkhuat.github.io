@@ -100,8 +100,6 @@
   .entry .role { color: var(--muted); font-style: italic; margin: 2px 0 10px; }
   .entry ul { margin: 0; padding-left: 18px; }
   .entry li { margin: 4px 0; }
-  .entry .proj { font-weight: 600; margin: 12px 0 2px; }
-  .entry .proj:first-of-type { margin-top: 0; }
 
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {
@@ -125,11 +123,6 @@
   .pubs .authors { color: var(--muted); font-size: 14px; display: block; margin: 2px 0; }
   .pubs .authors b { color: var(--text); font-weight: 600; }
   .pubs .venue { font-style: italic; font-size: 14px; }
-  .badge {
-    display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px;
-    background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 600;
-    font-style: normal;
-  }
 
   .awards { list-style: none; padding: 0; margin: 0; }
   .awards li {
@@ -167,10 +160,7 @@
       <h1>Khuat Thi Thu Hang</h1>
       <p class="tagline">Robotics · Unmanned Aerial Vehicles · Path Planning</p>
       <p class="bio">
-        I am a robotics engineer based in Hanoi, Vietnam, working on UAV autonomy — from flight control
-        and precision landing in industry to multi-UAV path planning and target search in research.
-        I hold a B.Eng. in Robotics Engineering (top 1%) and an M.Sc. in Electronics Engineering from
-        Vietnam National University.
+        Robotics engineer and researcher in Hanoi, Vietnam, working on UAV autonomy and path planning.
       </p>
       <div class="socials">
         <a href="mailto:thuhangkt01@gmail.com">
@@ -206,15 +196,18 @@
     <h2>Work Experience</h2>
 
     <div class="entry">
+      <div class="when">Aug 2026 – Present</div>
+      <div>
+        <h3>VinUniversity</h3>
+        <div class="role">Research Assistant · Hanoi, Vietnam</div>
+      </div>
+    </div>
+
+    <div class="entry">
       <div class="when">Feb 2026 – Aug 2026</div>
       <div>
         <h3>UAV Center — Viettel High Tech</h3>
         <div class="role">Automation Control Engineer · Hanoi, Vietnam</div>
-        <div class="proj">Automatic take-off and landing for U3-UAV</div>
-        <ul>
-          <li>Integrated a Total Energy Control System into the U3-UAV control system (SIL).</li>
-          <li>Designed the abort-landing phase of the U3-UAV system (SIL).</li>
-        </ul>
       </div>
     </div>
 
@@ -223,20 +216,6 @@
       <div>
         <h3>PhenikaaX</h3>
         <div class="role">Drone Embedded Software Engineer · Hanoi, Vietnam</div>
-        <div class="proj">Autonomous Forest Survey with VTOL-UAV</div>
-        <ul>
-          <li>Integrated PX4 Autopilot for VTOL and analysed flight logs for optimisation.</li>
-          <li>Developed software to control gimbal orientation.</li>
-          <li>Developed a computer-vision precision landing algorithm.</li>
-          <li>Collected image data for further analysis.</li>
-        </ul>
-        <div class="proj">Drone in Box</div>
-        <ul>
-          <li>Designed autonomous flight behaviours, including mission planning.</li>
-          <li>Implemented real-time data transmission and telemetry between drone and server.</li>
-          <li>Built drone software for remote server control of flight and mission execution.</li>
-          <li>Developed precision landing using computer vision and RTK-GPS.</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -248,29 +227,11 @@
       <div>
         <h3>Vietnam National University</h3>
         <div class="role">Research Study Assistant · Faculty of Electronics and Telecommunications</div>
-
-        <div class="proj">Multi-goal RRT with Safety and Dynamic Constraints for UAV Cooperative Path Planning</div>
         <ul>
-          <li>Incorporated UAV dynamic constraints into the RRT path-planning algorithm.</li>
-          <li>Validated through real-world UAV flight experiments.</li>
-        </ul>
-
-        <div class="proj">Differential Evolution path planning for UAV Search and Rescue</div>
-        <ul>
-          <li>Modelled search and rescue in a continuous environment with a camera search sensor.</li>
-          <li>Developed a Differential Evolution algorithm to generate optimal search flight paths.</li>
-        </ul>
-
-        <div class="proj">Sensor fusion for faster, more accurate RTAB-Map indoor 3D mapping</div>
-        <ul>
-          <li>Applied RTAB-Map for 3D mapping on mobile robots.</li>
-          <li>Fused camera and IPS localisation data to improve mapping accuracy.</li>
-        </ul>
-
-        <div class="proj">Pick-and-place robot for autonomous testing of smartphone camera modules</div>
-        <ul>
-          <li>Designed and developed the HMI for the PLC industrial computer.</li>
-          <li>Performed fault extraction on factory camera components via UART.</li>
+          <li>Multi-goal RRT with Safety and Dynamic Constraints for UAV Cooperative Path Planning</li>
+          <li>Differential Evolution path planning for UAV Search and Rescue</li>
+          <li>Sensor fusion for faster, more accurate RTAB-Map indoor 3D mapping</li>
+          <li>Pick-and-place robot for autonomous testing of smartphone camera modules</li>
         </ul>
       </div>
     </div>
@@ -290,27 +251,32 @@
     <h2>Publications</h2>
     <ol class="pubs">
       <li>
-        <span class="title">Polar coordinate-based differential evolution for moving target search using vision sensor on unmanned aerial vehicles</span>
+        <a class="title" href="https://thuhangkhuat.github.io/EMPSO-page/" target="_blank" rel="noopener">EMPSO: Evolutionary Multimodal Particle Swarm Optimization for Multi-UAV Minimum Time Search of a Lost Target</a>
+        <span class="authors"><b>Thu Hang Khuat</b>, Hai Trung Le, Khanh Thanh Tran, Thuy Pham, Manh Duong Phung</span>
+        <span class="venue">Submitted to Applied Soft Computing, 2026</span>
+      </li>
+      <li>
+        <a class="title" href="https://doi.org/10.1007/s11370-026-00738-x" target="_blank" rel="noopener">Polar coordinate-based differential evolution for moving target search using vision sensor on unmanned aerial vehicles</a>
         <span class="authors"><b>Thu Hang Khuat</b>, Duy-Nam Bui, Thuy Ngan Duong, Manh Duong Phung</span>
-        <span class="venue">Intelligent Service Robotics, 2026</span><span class="badge">Q1 · IF 5.9</span>
+        <span class="venue">Intelligent Service Robotics, 2026</span>
       </li>
       <li>
-        <span class="title">Multi-goal Rapidly Exploring Random Tree with Safety and Dynamic Constraints for UAV Cooperative Path Planning</span>
+        <a class="title" href="https://doi.org/10.1109/TVT.2025.3560658" target="_blank" rel="noopener">Multi-goal Rapidly Exploring Random Tree with Safety and Dynamic Constraints for UAV Cooperative Path Planning</a>
         <span class="authors"><b>Thu Hang Khuat</b>, Duy-Nam Bui, Hoa T.T. Nguyen, Mien L. Trinh, Minh T. Nguyen, Manh Duong Phung</span>
-        <span class="venue">IEEE Transactions on Vehicular Technology, 2025</span><span class="badge">Q1 · IF 7.5</span>
+        <span class="venue">IEEE Transactions on Vehicular Technology, 2025</span>
       </li>
       <li>
-        <span class="title">Model Predictive Control for Optimal Motion Planning of Unmanned Aerial Vehicles</span>
+        <a class="title" href="https://doi.org/10.1109/ICCRI64298.2024.00025" target="_blank" rel="noopener">Model Predictive Control for Optimal Motion Planning of Unmanned Aerial Vehicles</a>
         <span class="authors">Duy-Nam Bui, <b>Thu Hang Khuat</b>, Manh Duong Phung, Thuan Hoang Tran, Dong L.T. Tran</span>
-        <span class="venue">7th International Conference on Control, Robotics and Informatics (ICCRI), 2024</span><span class="badge">Best Paper Award</span>
+        <span class="venue">7th International Conference on Control, Robotics and Informatics (ICCRI), 2024</span>
       </li>
       <li>
-        <span class="title">Development of an Autonomous Component Testing System with Reliability Improvement Using Computer Vision and Machine Learning</span>
+        <a class="title" href="https://ph01.tci-thaijo.org/index.php/ecticit/article/view/253854" target="_blank" rel="noopener">Development of an Autonomous Component Testing System with Reliability Improvement Using Computer Vision and Machine Learning</a>
         <span class="authors">H. A. Phan, Van Tan Duong, M. N. T., A. N. Thi, <b>H. K. T. Thu</b>, T. L. Duc, Van Hieu Dang, H. Q. D., …, T. T. Bui</span>
         <span class="venue">ECTI Transactions on Computer and Information Technology (ECTI-CIT), 2024</span>
       </li>
       <li>
-        <span class="title">A sensor fusion approach for improving implementation speed and accuracy of RTAB-Map algorithm based indoor 3D mapping</span>
+        <a class="title" href="https://doi.org/10.1109/JCSSE58229.2023.10201983" target="_blank" rel="noopener">A sensor fusion approach for improving implementation speed and accuracy of RTAB-Map algorithm based indoor 3D mapping</a>
         <span class="authors">H. A. Phan, P. V. Nguyen, <b>T. H. T. Khuat</b>, H. D. Van, D. H. Q. Tran, B. L. Dang, …, T. C. Duc</span>
         <span class="venue">20th IEEE International Joint Conference on Computer Science and Software Engineering (JCSSE), 2023</span>
       </li>
