@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khuat Thi Thu Hang</title>
+<meta name="description" content="Khuat Thi Thu Hang — Robotics, Unmanned Aerial Vehicles, Path Planning. Engineer and researcher based in Hanoi, Vietnam.">
+<meta property="og:title" content="Khuat Thi Thu Hang">
+<meta property="og:description" content="Robotics · Unmanned Aerial Vehicles · Path Planning">
+<meta property="og:image" content="assets/avatar.jpg">
+<link rel="icon" href="assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfbfa;
+    --surface: #ffffff;
+    --text: #1d1f23;
+    --muted: #5d636e;
+    --line: #e4e6ea;
+    --accent: #0b6bcb;
+    --accent-soft: #e6f0fb;
+    --chip: #f1f3f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111316;
+      --surface: #181b1f;
+      --text: #e8eaed;
+      --muted: #9aa1ab;
+      --line: #2a2e34;
+      --accent: #5aa9f5;
+      --accent-soft: #1a2a3b;
+      --chip: #22262c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .inner {
+    max-width: 960px; margin: 0 auto; padding: 0 16px;
+    display: flex; gap: 20px; align-items: center; height: 56px;
+    overflow-x: auto; white-space: nowrap; scrollbar-width: none;
+  }
+  nav .brand { font-weight: 700; color: var(--text); margin-right: auto; }
+  nav a.link { color: var(--muted); font-size: 14px; font-weight: 500; }
+  nav a.link:hover { color: var(--text); text-decoration: none; }
+
+  main { max-width: 960px; margin: 0 auto; padding: 0 16px 64px; }
+
+  .hero {
+    display: grid; grid-template-columns: 1fr 220px; gap: 48px;
+    align-items: center; padding: 64px 0 48px;
+  }
+  .hero h1 {
+    font-family: "Source Serif 4", Georgia, serif; font-weight: 600;
+    font-size: clamp(34px, 5vw, 48px); line-height: 1.15; margin: 0 0 8px;
+  }
+  .hero .tagline { font-size: 18px; color: var(--muted); margin: 0 0 20px; }
+  .hero p.bio { margin: 0 0 24px; max-width: 58ch; }
+  .hero img {
+    width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+    object-position: 50% 45%; border: 4px solid var(--surface);
+    box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  }
+  .socials { display: flex; flex-wrap: wrap; gap: 10px; }
+  .socials a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--surface); color: var(--text); font-size: 14px; font-weight: 500;
+  }
+  .socials a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .socials svg { width: 16px; height: 16px; fill: currentColor; flex: none; }
+
+  section { padding: 40px 0 8px; border-top: 1px solid var(--line); scroll-margin-top: 64px; }
+  section h2 {
+    font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 24px; font-weight: 600;
+  }
+
+  .entry { display: grid; grid-template-columns: 170px 1fr; gap: 24px; margin-bottom: 32px; }
+  .entry .when { color: var(--muted); font-size: 14px; padding-top: 2px; }
+  .entry h3 { margin: 0; font-size: 17px; font-weight: 600; }
+  .entry .role { color: var(--muted); font-style: italic; margin: 2px 0 10px; }
+  .entry ul { margin: 0; padding-left: 18px; }
+  .entry li { margin: 4px 0; }
+  .entry .proj { font-weight: 600; margin: 12px 0 2px; }
+  .entry .proj:first-of-type { margin-top: 0; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--chip); border-radius: 6px; padding: 6px 12px;
+    font-size: 14px; font-weight: 500;
+  }
+
+  .pubs { list-style: none; padding: 0; margin: 0; counter-reset: pub; }
+  .pubs li {
+    position: relative; padding: 16px 18px 16px 52px; margin-bottom: 12px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    counter-increment: pub;
+  }
+  .pubs li::before {
+    content: counter(pub); position: absolute; left: 18px; top: 16px;
+    width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft);
+    color: var(--accent); font-size: 12px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .pubs .title { font-weight: 600; display: block; }
+  .pubs .authors { color: var(--muted); font-size: 14px; display: block; margin: 2px 0; }
+  .pubs .authors b { color: var(--text); font-weight: 600; }
+  .pubs .venue { font-style: italic; font-size: 14px; }
+  .badge {
+    display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 600;
+    font-style: normal;
+  }
+
+  .awards { list-style: none; padding: 0; margin: 0; }
+  .awards li {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 12px 0; border-bottom: 1px dashed var(--line);
+  }
+  .awards li:last-child { border-bottom: 0; }
+  .awards .yr { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 32px 16px 48px; }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; text-align: left; }
+    .hero img { width: 140px; height: 140px; order: -1; }
+    .entry { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="#top">Thu Hang Khuat</a>
+    <a class="link" href="#experience">Experience</a>
+    <a class="link" href="#research">Research</a>
+    <a class="link" href="#publications">Publications</a>
+    <a class="link" href="#education">Education</a>
+    <a class="link" href="#awards">Awards</a>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div>
+      <h1>Khuat Thi Thu Hang</h1>
+      <p class="tagline">Robotics · Unmanned Aerial Vehicles · Path Planning</p>
+      <p class="bio">
+        I am a robotics engineer based in Hanoi, Vietnam, working on UAV autonomy — from flight control
+        and precision landing in industry to multi-UAV path planning and target search in research.
+        I hold a B.Eng. in Robotics Engineering (top 1%) and an M.Sc. in Electronics Engineering from
+        Vietnam National University.
+      </p>
+      <div class="socials">
+        <a href="mailto:thuhangkt01@gmail.com">
+          <svg viewBox="0 0 24 24"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2 .9v11.6h16V6.4l-8 5.6-8-5.6ZM5.6 6l6.4 4.5L18.4 6H5.6Z"/></svg>
+          Email
+        </a>
+        <a href="https://scholar.google.com/citations?user=Dv4_MVkAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 3 1 9.5l4 2.35V17c0 2 3.1 4 7 4s7-2 7-4v-5.15l2-1.18V16h2V9.5L12 3Zm5 13.8c-.3.8-2.3 2.2-5 2.2s-4.7-1.4-5-2.2v-3.8l5 2.95 5-2.95v3.8ZM12 13.7 4.9 9.5 12 5.3l7.1 4.2L12 13.7Z"/></svg>
+          Google Scholar
+        </a>
+        <a href="https://www.linkedin.com/in/thu-hang-khuat-404a23213/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/thuhangkhuat" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.1c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3Z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.youtube.com/@thuhangkhuat241" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg>
+          YouTube
+        </a>
+        <a href="cv_thuhangkhuat.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm7 1.5V9h5.5L13 3.5ZM8 13v2h8v-2H8Zm0 4v2h5v-2H8Z"/></svg>
+          CV (PDF)
+        </a>
+      </div>
+    </div>
+    <img src="assets/avatar.jpg" alt="Portrait of Khuat Thi Thu Hang" width="220" height="220">
+  </header>
+
+  <section id="experience">
+    <h2>Work Experience</h2>
+
+    <div class="entry">
+      <div class="when">Feb 2026 – Aug 2026</div>
+      <div>
+        <h3>UAV Center — Viettel High Tech</h3>
+        <div class="role">Automation Control Engineer · Hanoi, Vietnam</div>
+        <div class="proj">Automatic take-off and landing for U3-UAV</div>
+        <ul>
+          <li>Integrated a Total Energy Control System into the U3-UAV control system (SIL).</li>
+          <li>Designed the abort-landing phase of the U3-UAV system (SIL).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Jul 2023 – Dec 2025</div>
+      <div>
+        <h3>PhenikaaX</h3>
+        <div class="role">Drone Embedded Software Engineer · Hanoi, Vietnam</div>
+        <div class="proj">Autonomous Forest Survey with VTOL-UAV</div>
+        <ul>
+          <li>Integrated PX4 Autopilot for VTOL and analysed flight logs for optimisation.</li>
+          <li>Developed software to control gimbal orientation.</li>
+          <li>Developed a computer-vision precision landing algorithm.</li>
+          <li>Collected image data for further analysis.</li>
+        </ul>
+        <div class="proj">Drone in Box</div>
+        <ul>
+          <li>Designed autonomous flight behaviours, including mission planning.</li>
+          <li>Implemented real-time data transmission and telemetry between drone and server.</li>
+          <li>Built drone software for remote server control of flight and mission execution.</li>
+          <li>Developed precision landing using computer vision and RTK-GPS.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <div class="entry">
+      <div class="when">Jul 2020 – Present</div>
+      <div>
+        <h3>Vietnam National University</h3>
+        <div class="role">Research Study Assistant · Faculty of Electronics and Telecommunications</div>
+
+        <div class="proj">Multi-goal RRT with Safety and Dynamic Constraints for UAV Cooperative Path Planning</div>
+        <ul>
+          <li>Incorporated UAV dynamic constraints into the RRT path-planning algorithm.</li>
+          <li>Validated through real-world UAV flight experiments.</li>
+        </ul>
+
+        <div class="proj">Differential Evolution path planning for UAV Search and Rescue</div>
+        <ul>
+          <li>Modelled search and rescue in a continuous environment with a camera search sensor.</li>
+          <li>Developed a Differential Evolution algorithm to generate optimal search flight paths.</li>
+        </ul>
+
+        <div class="proj">Sensor fusion for faster, more accurate RTAB-Map indoor 3D mapping</div>
+        <ul>
+          <li>Applied RTAB-Map for 3D mapping on mobile robots.</li>
+          <li>Fused camera and IPS localisation data to improve mapping accuracy.</li>
+        </ul>
+
+        <div class="proj">Pick-and-place robot for autonomous testing of smartphone camera modules</div>
+        <ul>
+          <li>Designed and developed the HMI for the PLC industrial computer.</li>
+          <li>Performed fault extraction on factory camera components via UART.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Reviewer</div>
+      <div>
+        <ul>
+          <li>IEEE Transactions on Industrial Electronics</li>
+          <li>IEEE Transactions on Vehicular Technology</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <ol class="pubs">
+      <li>
+        <span class="title">Polar coordinate-based differential evolution for moving target search using vision sensor on unmanned aerial vehicles</span>
+        <span class="authors"><b>Thu Hang Khuat</b>, Duy-Nam Bui, Thuy Ngan Duong, Manh Duong Phung</span>
+        <span class="venue">Intelligent Service Robotics, 2026</span><span class="badge">Q1 · IF 5.9</span>
+      </li>
+      <li>
+        <span class="title">Multi-goal Rapidly Exploring Random Tree with Safety and Dynamic Constraints for UAV Cooperative Path Planning</span>
+        <span class="authors"><b>Thu Hang Khuat</b>, Duy-Nam Bui, Hoa T.T. Nguyen, Mien L. Trinh, Minh T. Nguyen, Manh Duong Phung</span>
+        <span class="venue">IEEE Transactions on Vehicular Technology, 2025</span><span class="badge">Q1 · IF 7.5</span>
+      </li>
+      <li>
+        <span class="title">Model Predictive Control for Optimal Motion Planning of Unmanned Aerial Vehicles</span>
+        <span class="authors">Duy-Nam Bui, <b>Thu Hang Khuat</b>, Manh Duong Phung, Thuan Hoang Tran, Dong L.T. Tran</span>
+        <span class="venue">7th International Conference on Control, Robotics and Informatics (ICCRI), 2024</span><span class="badge">Best Paper Award</span>
+      </li>
+      <li>
+        <span class="title">Development of an Autonomous Component Testing System with Reliability Improvement Using Computer Vision and Machine Learning</span>
+        <span class="authors">H. A. Phan, Van Tan Duong, M. N. T., A. N. Thi, <b>H. K. T. Thu</b>, T. L. Duc, Van Hieu Dang, H. Q. D., …, T. T. Bui</span>
+        <span class="venue">ECTI Transactions on Computer and Information Technology (ECTI-CIT), 2024</span>
+      </li>
+      <li>
+        <span class="title">A sensor fusion approach for improving implementation speed and accuracy of RTAB-Map algorithm based indoor 3D mapping</span>
+        <span class="authors">H. A. Phan, P. V. Nguyen, <b>T. H. T. Khuat</b>, H. D. Van, D. H. Q. Tran, B. L. Dang, …, T. C. Duc</span>
+        <span class="venue">20th IEEE International Joint Conference on Computer Science and Software Engineering (JCSSE), 2023</span>
+      </li>
+    </ol>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="when">Feb 2024 – Sep 2024</div>
+      <div>
+        <h3>Vietnam National University, Hanoi</h3>
+        <div class="role">M.Sc. in Electronics Engineering · CGPA 3.62/4.0</div>
+        <ul><li>Thesis: <em>Distributed Motion Planning and Target Tracking in Multi-UAV Systems</em></li></ul>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">Aug 2019 – Jun 2023</div>
+      <div>
+        <h3>Vietnam National University, Hanoi</h3>
+        <div class="role">B.Eng. in Robotics Engineering · CGPA 3.84/4.0 (Top 1%)</div>
+        <ul><li>Thesis: <em>Polar Coordinate-based Differential Evolution for Moving Target Search Using Vision Sensor on Unmanned Aerial Vehicles</em></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="chips">
+      <span class="chip">C / C++</span>
+      <span class="chip">Python</span>
+      <span class="chip">MATLAB</span>
+      <span class="chip">ROS 1 &amp; ROS 2</span>
+      <span class="chip">PX4 Autopilot</span>
+      <span class="chip">Gazebo</span>
+      <span class="chip">Docker</span>
+      <span class="chip">SolidWorks</span>
+      <span class="chip">Git</span>
+      <span class="chip">LaTeX</span>
+      <span class="chip">Path planning</span>
+      <span class="chip">Swarm optimisation</span>
+      <span class="chip">Computer vision</span>
+    </div>
+  </section>
+
+  <section id="awards">
+    <h2>Honors &amp; Awards</h2>
+    <ul class="awards">
+      <li><span>Best Paper Award, 7th International Conference on Control, Robotics and Informatics</span><span class="yr">2024</span></li>
+      <li><span>Master Scholarship, Vingroup Innovation Foundation (VINIF)</span><span class="yr">2023, 2024</span></li>
+      <li><span>Third Prize, Science and Technology Award for Students, Ministry of Education</span><span class="yr">2022</span></li>
+      <li><span>Odon Vallet Scholarship</span><span class="yr">2022</span></li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  © 2026 Khuat Thi Thu Hang · Hanoi, Vietnam
+</footer>
+
+</body>
+</html>
