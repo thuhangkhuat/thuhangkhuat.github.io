@@ -96,6 +96,13 @@
 
   .entry { display: grid; grid-template-columns: 170px 1fr; gap: 24px; margin-bottom: 32px; }
   .entry .when { color: var(--muted); font-size: 14px; padding-top: 2px; }
+  .entry .head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .logo {
+    flex: none; width: 132px; height: 48px; padding: 8px 12px; border-radius: 8px;
+    background: #fff; border: 1px solid var(--line);
+    display: grid; place-items: center;
+  }
+  .logo img { max-width: 108px; max-height: 30px; width: auto; height: auto; display: block; }
   .entry h3 { margin: 0; font-size: 17px; font-weight: 600; }
   .entry .role { color: var(--muted); font-style: italic; margin: 2px 0 10px; }
   .entry ul { margin: 0; padding-left: 18px; }
@@ -107,18 +114,18 @@
     font-size: 14px; font-weight: 500;
   }
 
-  .pubs { list-style: none; padding: 0; margin: 0; counter-reset: pub; }
+  .pubs { list-style: none; padding: 0; margin: 0; }
   .pubs li {
-    position: relative; padding: 16px 18px 16px 52px; margin-bottom: 12px;
+    display: grid; grid-template-columns: 180px 1fr; gap: 20px; align-items: center;
+    padding: 14px; margin-bottom: 12px;
     background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
-    counter-increment: pub;
   }
-  .pubs li::before {
-    content: counter(pub); position: absolute; left: 18px; top: 16px;
-    width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft);
-    color: var(--accent); font-size: 12px; font-weight: 700;
-    display: grid; place-items: center;
+  .pubs .thumb {
+    display: block; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden;
+    background: #fff; border: 1px solid var(--line);
   }
+  .pubs .thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .pubs .thumb.photo img { object-fit: cover; }
   .pubs .title { font-weight: 600; display: block; }
   .pubs .authors { color: var(--muted); font-size: 14px; display: block; margin: 2px 0; }
   .pubs .authors b { color: var(--text); font-weight: 600; }
@@ -138,6 +145,10 @@
     .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; text-align: left; }
     .hero img { width: 140px; height: 140px; order: -1; }
     .entry { grid-template-columns: 1fr; gap: 4px; }
+    .pubs li { grid-template-columns: 1fr; gap: 12px; }
+    .logo { width: 104px; height: 42px; padding: 6px 10px; }
+    .logo img { max-width: 84px; max-height: 26px; }
+    .pubs .thumb { aspect-ratio: 16 / 9; }
   }
 </style>
 </head>
@@ -147,7 +158,6 @@
   <div class="inner">
     <a class="brand" href="#top">Thu Hang Khuat</a>
     <a class="link" href="#experience">Experience</a>
-    <a class="link" href="#research">Research</a>
     <a class="link" href="#publications">Publications</a>
     <a class="link" href="#education">Education</a>
     <a class="link" href="#awards">Awards</a>
@@ -198,51 +208,39 @@
     <div class="entry">
       <div class="when">Aug 2026 – Present</div>
       <div>
-        <h3>VinUniversity</h3>
-        <div class="role">Research Assistant · Hanoi, Vietnam</div>
+        <div class="head">
+          <div>
+            <h3>VinUniversity</h3>
+            <div class="role">Research Assistant · Hanoi, Vietnam</div>
+          </div>
+          <span class="logo"><img src="assets/logos/vinuni.svg" alt="VinUniversity logo"></span>
+        </div>
       </div>
     </div>
 
     <div class="entry">
       <div class="when">Feb 2026 – Aug 2026</div>
       <div>
-        <h3>UAV Center — Viettel High Tech</h3>
-        <div class="role">Automation Control Engineer · Hanoi, Vietnam</div>
+        <div class="head">
+          <div>
+            <h3>UAV Center — Viettel High Tech</h3>
+            <div class="role">Automation Control Engineer · Hanoi, Vietnam</div>
+          </div>
+          <span class="logo"><img src="assets/logos/viettel-high-tech.svg" alt="Viettel High Tech logo"></span>
+        </div>
       </div>
     </div>
 
     <div class="entry">
       <div class="when">Jul 2023 – Dec 2025</div>
       <div>
-        <h3>PhenikaaX</h3>
-        <div class="role">Drone Embedded Software Engineer · Hanoi, Vietnam</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="research">
-    <h2>Research</h2>
-    <div class="entry">
-      <div class="when">Jul 2020 – Present</div>
-      <div>
-        <h3>Vietnam National University</h3>
-        <div class="role">Research Study Assistant · Faculty of Electronics and Telecommunications</div>
-        <ul>
-          <li>Multi-goal RRT with Safety and Dynamic Constraints for UAV Cooperative Path Planning</li>
-          <li>Differential Evolution path planning for UAV Search and Rescue</li>
-          <li>Sensor fusion for faster, more accurate RTAB-Map indoor 3D mapping</li>
-          <li>Pick-and-place robot for autonomous testing of smartphone camera modules</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="when">Reviewer</div>
-      <div>
-        <ul>
-          <li>IEEE Transactions on Industrial Electronics</li>
-          <li>IEEE Transactions on Vehicular Technology</li>
-        </ul>
+        <div class="head">
+          <div>
+            <h3>PhenikaaX</h3>
+            <div class="role">Drone Embedded Software Engineer · Hanoi, Vietnam</div>
+          </div>
+          <span class="logo"><img src="assets/logos/phenikaax.svg" alt="Phenikaa-X logo"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -251,34 +249,52 @@
     <h2>Publications</h2>
     <ol class="pubs">
       <li>
-        <a class="title" href="https://thuhangkhuat.github.io/EMPSO-page/" target="_blank" rel="noopener">EMPSO: Evolutionary Multimodal Particle Swarm Optimization for Multi-UAV Minimum Time Search of a Lost Target</a>
-        <span class="authors"><b>Thu Hang Khuat</b>, Hai Trung Le, Khanh Thanh Tran, Thuy Pham, Manh Duong Phung</span>
-        <span class="venue">Submitted to Applied Soft Computing, 2026</span>
+        <a class="thumb" href="https://thuhangkhuat.github.io/EMPSO-page/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/pubs/empso.jpg" alt="" loading="lazy"></a>
+        <div>
+          <a class="title" href="https://thuhangkhuat.github.io/EMPSO-page/" target="_blank" rel="noopener">Evolutionary Multimodal Particle Swarm Optimization for Multi-UAV Minimum Time Search of a Lost Target</a>
+          <span class="authors"><b>Thu Hang Khuat</b>, Hai Trung Le, Khanh Thanh Tran, Thuy Pham, Manh Duong Phung</span>
+          <span class="venue">Submitted to Applied Soft Computing, 2026</span>
+        </div>
       </li>
       <li>
-        <a class="title" href="https://doi.org/10.1007/s11370-026-00738-x" target="_blank" rel="noopener">Polar coordinate-based differential evolution for moving target search using vision sensor on unmanned aerial vehicles</a>
-        <span class="authors"><b>Thu Hang Khuat</b>, Duy-Nam Bui, Thuy Ngan Duong, Manh Duong Phung</span>
-        <span class="venue">Intelligent Service Robotics, 2026</span>
+        <a class="thumb" href="https://doi.org/10.1007/s11370-026-00738-x" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/pubs/pde.jpg" alt="" loading="lazy"></a>
+        <div>
+          <a class="title" href="https://doi.org/10.1007/s11370-026-00738-x" target="_blank" rel="noopener">Polar coordinate-based differential evolution for moving target search using vision sensor on unmanned aerial vehicles</a>
+          <span class="authors"><b>Thu Hang Khuat</b>, Duy-Nam Bui, Thuy Ngan Duong, Manh Duong Phung</span>
+          <span class="venue">Intelligent Service Robotics, 2026</span>
+        </div>
       </li>
       <li>
-        <a class="title" href="https://doi.org/10.1109/TVT.2025.3560658" target="_blank" rel="noopener">Multi-goal Rapidly Exploring Random Tree with Safety and Dynamic Constraints for UAV Cooperative Path Planning</a>
-        <span class="authors"><b>Thu Hang Khuat</b>, Duy-Nam Bui, Hoa T.T. Nguyen, Mien L. Trinh, Minh T. Nguyen, Manh Duong Phung</span>
-        <span class="venue">IEEE Transactions on Vehicular Technology, 2025</span>
+        <a class="thumb photo" href="https://doi.org/10.1109/TVT.2025.3560658" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/pubs/multirrt.jpg" alt="" loading="lazy"></a>
+        <div>
+          <a class="title" href="https://doi.org/10.1109/TVT.2025.3560658" target="_blank" rel="noopener">Multi-goal Rapidly Exploring Random Tree with Safety and Dynamic Constraints for UAV Cooperative Path Planning</a>
+          <span class="authors"><b>Thu Hang Khuat</b>, Duy-Nam Bui, Hoa T.T. Nguyen, Mien L. Trinh, Minh T. Nguyen, Manh Duong Phung</span>
+          <span class="venue">IEEE Transactions on Vehicular Technology, 2025</span>
+        </div>
       </li>
       <li>
-        <a class="title" href="https://doi.org/10.1109/ICCRI64298.2024.00025" target="_blank" rel="noopener">Model Predictive Control for Optimal Motion Planning of Unmanned Aerial Vehicles</a>
-        <span class="authors">Duy-Nam Bui, <b>Thu Hang Khuat</b>, Manh Duong Phung, Thuan Hoang Tran, Dong L.T. Tran</span>
-        <span class="venue">7th International Conference on Control, Robotics and Informatics (ICCRI), 2024</span>
+        <a class="thumb" href="https://doi.org/10.1109/ICCRI64298.2024.00025" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/pubs/mpc.jpg" alt="" loading="lazy"></a>
+        <div>
+          <a class="title" href="https://doi.org/10.1109/ICCRI64298.2024.00025" target="_blank" rel="noopener">Model Predictive Control for Optimal Motion Planning of Unmanned Aerial Vehicles</a>
+          <span class="authors">Duy-Nam Bui, <b>Thu Hang Khuat</b>, Manh Duong Phung, Thuan Hoang Tran, Dong L.T. Tran</span>
+          <span class="venue">7th International Conference on Control, Robotics and Informatics (ICCRI), 2024</span>
+        </div>
       </li>
       <li>
-        <a class="title" href="https://ph01.tci-thaijo.org/index.php/ecticit/article/view/253854" target="_blank" rel="noopener">Development of an Autonomous Component Testing System with Reliability Improvement Using Computer Vision and Machine Learning</a>
-        <span class="authors">H. A. Phan, Van Tan Duong, M. N. T., A. N. Thi, <b>H. K. T. Thu</b>, T. L. Duc, Van Hieu Dang, H. Q. D., …, T. T. Bui</span>
-        <span class="venue">ECTI Transactions on Computer and Information Technology (ECTI-CIT), 2024</span>
+        <a class="thumb photo" href="https://ph01.tci-thaijo.org/index.php/ecticit/article/view/253854" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/pubs/ecti.jpg" alt="" loading="lazy"></a>
+        <div>
+          <a class="title" href="https://ph01.tci-thaijo.org/index.php/ecticit/article/view/253854" target="_blank" rel="noopener">Development of an Autonomous Component Testing System with Reliability Improvement Using Computer Vision and Machine Learning</a>
+          <span class="authors">H. A. Phan, Van Tan Duong, M. N. T., A. N. Thi, <b>H. K. T. Thu</b>, T. L. Duc, Van Hieu Dang, H. Q. D., …, T. T. Bui</span>
+          <span class="venue">ECTI Transactions on Computer and Information Technology (ECTI-CIT), 2024</span>
+        </div>
       </li>
       <li>
-        <a class="title" href="https://doi.org/10.1109/JCSSE58229.2023.10201983" target="_blank" rel="noopener">A sensor fusion approach for improving implementation speed and accuracy of RTAB-Map algorithm based indoor 3D mapping</a>
-        <span class="authors">H. A. Phan, P. V. Nguyen, <b>T. H. T. Khuat</b>, H. D. Van, D. H. Q. Tran, B. L. Dang, …, T. C. Duc</span>
-        <span class="venue">20th IEEE International Joint Conference on Computer Science and Software Engineering (JCSSE), 2023</span>
+        <a class="thumb" href="https://doi.org/10.1109/JCSSE58229.2023.10201983" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img src="assets/pubs/rtabmap.jpg" alt="" loading="lazy"></a>
+        <div>
+          <a class="title" href="https://doi.org/10.1109/JCSSE58229.2023.10201983" target="_blank" rel="noopener">A sensor fusion approach for improving implementation speed and accuracy of RTAB-Map algorithm based indoor 3D mapping</a>
+          <span class="authors">H. A. Phan, P. V. Nguyen, <b>T. H. T. Khuat</b>, H. D. Van, D. H. Q. Tran, B. L. Dang, …, T. C. Duc</span>
+          <span class="venue">20th IEEE International Joint Conference on Computer Science and Software Engineering (JCSSE), 2023</span>
+        </div>
       </li>
     </ol>
   </section>
@@ -300,25 +316,6 @@
         <div class="role">B.Eng. in Robotics Engineering · CGPA 3.84/4.0 (Top 1%)</div>
         <ul><li>Thesis: <em>Polar Coordinate-based Differential Evolution for Moving Target Search Using Vision Sensor on Unmanned Aerial Vehicles</em></li></ul>
       </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="chips">
-      <span class="chip">C / C++</span>
-      <span class="chip">Python</span>
-      <span class="chip">MATLAB</span>
-      <span class="chip">ROS 1 &amp; ROS 2</span>
-      <span class="chip">PX4 Autopilot</span>
-      <span class="chip">Gazebo</span>
-      <span class="chip">Docker</span>
-      <span class="chip">SolidWorks</span>
-      <span class="chip">Git</span>
-      <span class="chip">LaTeX</span>
-      <span class="chip">Path planning</span>
-      <span class="chip">Swarm optimisation</span>
-      <span class="chip">Computer vision</span>
     </div>
   </section>
 
